@@ -20,7 +20,7 @@ import logging
 from flask import Flask
 from flask_cors import CORS
 
-from .api import api_bp, api_index
+from .api import api_bp, apiv1_bp, api_index
 from .encoders import EnhancedJsonEncoder
 from .visual_analysis import AnalysisService
 from .pin_detection import CvPipelinePinDetector, TensorflowPinDetector
@@ -106,7 +106,9 @@ def create_app(test_config: dict = None) -> Flask:
     app.json_encoder = EnhancedJsonEncoder
 
     # Register API blueprints (REST)
-    app.register_blueprint(api_bp, url_prefix="/api")
+    # app.register_blueprint(api_bp, url_prefix="/api")
+    app.register_blueprint(api_bp)
+    app.register_blueprint(apiv1_bp,  url_prefix='/api')
 
     # Default route redirects to the API documentation
     app.add_url_rule('/', view_func=api_index)

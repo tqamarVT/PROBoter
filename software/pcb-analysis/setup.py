@@ -43,7 +43,7 @@ setup(
     install_requires=[
         'werkzeug==2.1.2',
         'flask',
-        'flask-cors'
+        'flask-cors',
         'flask-restx',
         'tensorflow',
         'opencv-python-headless',

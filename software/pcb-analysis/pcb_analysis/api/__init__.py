@@ -24,7 +24,7 @@ api_bp = Blueprint('api', __name__)
 
 # API version 1
 apiv1_bp = Blueprint('apiv1', __name__, url_prefix='/v1')
-api_bp.register_blueprint(apiv1_bp)
+# api_bp.register_blueprint(apiv1_bp)
 
 apiv1 = Api(apiv1_bp,
             title="PCB analysis API v1",

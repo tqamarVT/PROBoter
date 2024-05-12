@@ -21,8 +21,8 @@ import numpy as np
 from pcb_analysis.model import Pin, Chip, ChipPackage
 
 
-def draw_pin_detections(image: np.ndarray, pins: Iterable[Pin], color=(0, 0, 255),
-                        marker_size=10, marker_thickness=1, draw_pin_contours=False,
+def draw_pin_detections(image: np.ndarray, pins: Iterable[Pin], color=(255, 0, 0),
+                        marker_size=20, marker_thickness=1, draw_pin_contours=False,
                         fill_color=None) -> np.ndarray:
     """
     Draws the results of the pin detection
