@@ -23,7 +23,7 @@ from flask_cors import CORS
 from .api import api_bp, apiv1_bp, api_index
 from .encoders import EnhancedJsonEncoder
 from .visual_analysis import AnalysisService
-from .pin_detection import CvPipelinePinDetector, TensorflowPinDetector
+from .pin_detection import CvPipelinePinDetector, TensorflowPinDetector, ColorBasedPinDetector
 from .chip_detection import TensorflowChipDetector, ColorBasedChipDetector
 
 
@@ -81,6 +81,10 @@ def create_app(test_config: dict = None) -> Flask:
                                       factory=lambda: TensorflowPinDetector(
                                           model=TensorflowPinDetector.FASTER_RCNN_IC_PINS),
                                       pin_detector_id='0b1aa126-d8db-4c3c-af7f-6910c7d3b1eb')
+    
+    analysis_service.add_pin_detector(name="Color segmentation",
+                                      factory=ColorBasedPinDetector,
+                                      pin_detector_id='fbb400c8-cbc4-4e11-b75a-ac788b230c95')    
 
     # Create and configure the Flask application
     app = Flask(__name__, instance_relative_config=True)

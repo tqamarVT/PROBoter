@@ -113,7 +113,6 @@ class CvPipelinePinDetector(PinDetector):
         chip_image_without_bg = cv2.subtract(chip_image, bg_mask)
         chip_image_without_bg_and_pk = cv2.subtract(
             chip_image_without_bg, package_mask)
-        cv2.imshow('test', chip_image_without_bg_and_pk)
 
         # Apply thresholding to the remaining gray scale image
         gray = cv2.cvtColor(chip_image_without_bg_and_pk, cv2.COLOR_BGR2GRAY)
